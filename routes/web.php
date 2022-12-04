@@ -25,4 +25,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/top', [App\Http\Controllers\HomeController::class, 'top'])->name('top');
+
 Route::get('/create', [App\Http\Controllers\HomeController::class, 'create'])->name('create');
+Route::post('/store', [App\Http\Controllers\HomeController::class, 'store'])->name('store');

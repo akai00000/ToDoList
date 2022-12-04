@@ -12,5 +12,15 @@ class List_model extends Model
     // このモデルが扱えるテーブルはおそらくlists_models？になる可能性があるため、念の為、
     // 別テーブルをつなげるコードを入れている。
     protected $table = "Lists";
-    protected $guarded = ['created_at', 'updated_at'];
+    protected $guarded = ['id'];
+
+
+    public static $rules = array([
+        'title' => 'required',
+        'rabel' => 'required',
+        'rabel_id' => 'nullable',
+        'priority' => 'required',
+        'deadline' => 'required',
+        'content' => 'required',
+    ]);
 }
