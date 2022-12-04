@@ -76,6 +76,15 @@
                 </div>
             </div>
         </nav>
+
+        <div class = "common-header-page">
+            <!-- 新規作成、編集ボタンの作成 -->
+            <ul class="list-group list-group-horizontal" style = "background-color: gray;">
+                <li class="list-group-item">新規作成</li>
+                <li class="list-group-item">タスクの編集</li>
+            </ul>
+        </div>
+
         <main class="py-4">
             @yield('content')
         </main>

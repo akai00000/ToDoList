@@ -30,4 +30,9 @@ class HomeController extends Controller
     {
         return view('top');
     }
+
+    public function create()
+    {
+        return view('create');
+    }
 }
