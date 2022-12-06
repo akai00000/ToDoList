@@ -6,7 +6,7 @@
 
         <div class="col-md-2">
             <div class="card">
-                <div class="card-header">分類一覧</div>
+                <div class="card-header">ラベル一覧</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,8 +14,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
                 </div>
             </div>
         </div>
