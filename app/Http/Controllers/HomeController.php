@@ -49,6 +49,7 @@ class HomeController extends Controller
         // dd($data);
         unset($data['_token']);
 
+
 // ↓あとでユーザーIDはカラムに入れておく。
         $exist_rabel = rabel::where('rabel_content', $data['rabel'])->first();
         if(empty($exist_rabel['rabel_id']) )
@@ -60,7 +61,6 @@ class HomeController extends Controller
 
 
         $list->fill(['user_id' => $user_id, 'rabel_id' => $rabel_id, 'status' => 1])->fill($data)->save();
-
-        return redirect('/top');
+        return redirect()->route('top')->with('success', 'タスクを追加しました。');
     }
 }

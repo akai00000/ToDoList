@@ -77,12 +77,14 @@
             </div>
         </nav>
 
-        <div class = "common-header-page">
+        <div class = "container">
+            <div class="column_create_header">
             <!-- 新規作成、編集ボタンの作成 -->
-            <ul class="list-group list-group-horizontal" style = "background-color: gray;">
+            <ul class="list-group list-group-horizontal" style = "background-color: $gray-300;">
                 <li class="list-group-item"><a href = "/create">新規作成</a></li>
                 <li class="list-group-item"><a href = "/edit">タスクの編集</a></li>
             </ul>
+            </div>
         </div>
 
         <main class="py-4">
@@ -90,7 +92,7 @@
         </main>
 
         <div class = "footer">
-            <div class = "container-fluid">
+            <div class = "container">
                 <small class = "row justify-content-end p-2">
                     © 2022 Ryoto Akai
                 </small>
