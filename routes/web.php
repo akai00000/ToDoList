@@ -19,11 +19,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
+// Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/top', [App\Http\Controllers\HomeController::class, 'index'])->name('top');
 Route::get('/top', [App\Http\Controllers\HomeController::class, 'top'])->name('top');
 
 Route::get('/create', [App\Http\Controllers\HomeController::class, 'create'])->name('create');
