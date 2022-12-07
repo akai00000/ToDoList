@@ -14,11 +14,19 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
+                    <div class="rabel-block">
+                            <div class="d-flex flex-column" style="height: 200px;">
+                            @foreach($rabels as $rabel)
+                            <div class="flex-fill border">
+                                <a href = "">{{ $rabel['rabel_content'] }}</a>
+                            </div>  
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-
 
         <div class="col-md-6">
             <div class="card">
@@ -38,6 +46,7 @@
 
         <div class="col-md-4">
             <div class="card">
+
                 <div class="card-header">締切順</div>
 
                 <div class="card-body">
@@ -47,8 +56,17 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <div class="title-block">
+                        <div class="d-flex flex-column">
+                            @foreach($titles as $title_content)
+                            <div class="flex-fill border">
+                                <a href = "">{{ $title_content['title'] }}</a>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
 

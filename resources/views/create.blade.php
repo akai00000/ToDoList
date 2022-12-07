@@ -33,7 +33,7 @@
                     <form method='POST' action="/store">
                         @csrf
                         <!-- ユーザーIDのhidden送信 -->
-                        <!-- <input type='hidden' name='user_id' value="{{}}"> -->
+                        <input type='hidden' name='user_id' value="">
                         <!-- タイトル -->
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">・タイトル</label>
