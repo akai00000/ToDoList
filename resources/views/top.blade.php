@@ -9,11 +9,6 @@
                 <div class="card-header">ラベル一覧</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
                     <div class="rabel-block">
                             <div class="d-flex flex-column" style="height: 200px;">
@@ -39,7 +34,6 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
                 </div>
             </div>
         </div>
