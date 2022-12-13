@@ -84,4 +84,33 @@ class HomeController extends Controller
 
         return redirect()->route('top')->with('success', 'タスクを追加しました。');
     }
+
+    public function edit(Request $request)
+    {
+        $user = \Auth::user();
+        $user_id = $user['id'];
+        $rabels = rabel::where('user_id', $user_id)->where('rabel_content')->get();
+        // dd($rabels);
+        // findはgetも兼ねている？
+        $list = List_model::find($request->id);
+
+        $titles = List_model::where('user_id', $user_id)->where('title')->get();
+        // dd($list);
+        return view('edit', ['rabels' => $rabels, 'list' => $list, 'titles' => $titles]);
+    }
+
+    public function update(Request $request)
+    {
+        $user = \Auth::user();
+        $editAfterList = $request->all();
+        // dd($editAfterList);
+        unset($editAfterList['_token']);
+
+        dd($request->id);
+        $list = List_model::find($request->id);
+        dd($list);
+        $list->fill($editAfterList)->fill($user)->save();
+
+        return redirect('/top');
+    }
 }
