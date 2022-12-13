@@ -32,3 +32,6 @@ Route::post('/store', [App\Http\Controllers\HomeController::class, 'store'])->na
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
+Route::post('/edit', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
