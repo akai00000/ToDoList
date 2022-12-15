@@ -42,7 +42,8 @@
                     <form method='POST' action="/edit">
                         @csrf
                         <!-- ユーザーIDのhidden送信 -->
-                        <input type='hidden' name='user_id' value="{{ $list->id }}">
+                        <input type='hidden' name='user_id' value="{{ $user_id }}">
+                        <input type='hidden' name='list_id' value="{{ $list_id }}">
                         <!-- タイトル -->
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">・タイトル</label>

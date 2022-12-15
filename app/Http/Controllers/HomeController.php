@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\List_model;
 use App\Models\rabel;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -87,27 +88,28 @@ class HomeController extends Controller
     {
         $user = \Auth::user();
         $user_id = $user['id'];
+        // ↓editのviewにlist_idも渡す
+        $list_id = $request->id;
         $rabels = rabel::where('user_id', $user_id)->where('rabel_content')->get();
         // dd($rabels);
         // findはgetも兼ねている？
-        $list = List_model::find($request->id);
-
+        $list = List_model::find($list_id);
         $titles = List_model::where('user_id', $user_id)->where('title')->get();
         // dd($list);
-        return view('edit', ['rabels' => $rabels, 'list' => $list, 'titles' => $titles]);
+        return view('edit', compact('user_id', 'rabels', 'titles', 'list', 'list_id'));
     }
 
     public function update(Request $request)
     {
-        $user = \Auth::user();
-        $editAfterList = $request->all();
-        // dd($editAfterList);
-        unset($editAfterList['_token']);
-
-        dd($request->id);
-        $list = List_model::find($request->id);
-        dd($list);
-        $list->fill($editAfterList)->fill($user)->save();
+        // 入力した情報を格納
+        $updateList = $request->all();
+        unset($updateList['_token']);
+        \Log::debug($request);
+        // ↓クエリビルダから取得したlistのidを用いて、モデル（テーブル）から一致するレコードを取得し、変数に格納
+        $list = List_model::find($updateList['list_id']);
+        // dd($list);
+        // ↓入力した内容を取得してきたレコードに対して上書き保存
+        $list->fill($updateList)->save();
 
         return redirect('/top');
     }
