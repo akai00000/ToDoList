@@ -34,4 +34,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
-Route::post('/edit', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
+Route::post('/update', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
+
+Route::get('/del', [App\Http\Controllers\HomeController::class, 'del'])->name('del');
+Route::post('/del', [App\Http\Controllers\HomeController::class, 'remove'])->name('remove');
