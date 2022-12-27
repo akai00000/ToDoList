@@ -38,3 +38,8 @@ Route::post('/update', [App\Http\Controllers\HomeController::class, 'update'])->
 
 Route::get('/del', [App\Http\Controllers\HomeController::class, 'del'])->name('del');
 Route::post('/del', [App\Http\Controllers\HomeController::class, 'remove'])->name('remove');
+
+// vueを用いた表示
+Route::get('/sample', function () {
+    return view('sample');
+});
