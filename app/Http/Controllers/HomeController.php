@@ -38,7 +38,12 @@ class HomeController extends Controller
         // dd($rabels);
         $titles = List_model::select('title')->where('user_id', $user_id)->where('status', 1)->orderBy('deadline', 'asc')->get();
         // dd($titles);
-        return view('top', compact('rabels', 'titles'));
+
+        $data = [
+            'msg' => 'This is vue.js text,'
+            ];
+
+        return view('top', compact('rabels', 'titles', 'data'));
     }
 
     public function create()
@@ -52,20 +57,36 @@ class HomeController extends Controller
     {
         $user = \Auth::user();
         $user_id = $user['id'];
+        $status = 1;
+
         // dd($user_id);
         $list = new List_model;
+        $rabel = new rabel;
         $data = $request->all();
         // array_unshift($data,'user_id');
         // dd($data);
         unset($data['_token']);
+        // dd($data['status']);
+        // dd($list);箱は用意できている。
+        // dd($rabel);
 
 
         // ↓あとでユーザーIDはカラムに入れておく。
         $exist_rabel = rabel::where('user_id', $user_id)->where('rabel_content', $data['rabel'])->first();
-        if(empty($exist_rabel['rabel_id']) )
+        // dd($exist_rabel);
+        //..//existまではデータが来ている。
+        if(empty($exist_rabel) )
         {
-            //↓リクエストされたラベルを挿入し、挿入時に生成されたraelsのIDを受け取る。
-            $rabel_id = rabel::insertGetId(['rabel_content' => $data['rabel'], 'user_id' => $user_id]);
+            // $rabel->fill([
+            //     'rabel_content' => $data['rabel'],
+            //     'user_id' => $user_id,
+            //     'status' => $status,
+            // ])->save();
+
+            //↓リクエストされたラベルを挿入し、挿入時に生成されたrabelsのIDを受け取る。
+            // そのため、上記のfill()はなくてもいける。
+            $rabel_id = rabel::insertGetId(['rabel_content' => $data['rabel'], 'user_id' => $user_id, 'status' => $status]);
+            // dd($data['status']);
         } else {
             $rabel_id = $exist_rabel['rabel_id'];
         }
@@ -76,7 +97,7 @@ class HomeController extends Controller
             'rabel' => $data['rabel'], 
             'rabel_id' => $rabel_id, 
             'priority' => $data['priority'], 
-            'status' => 1, 
+            'status' => $data['status'], 
             'deadline' => $data['deadline'], 
             'content' => $data['content'], 
             ])->save();
@@ -90,6 +111,7 @@ class HomeController extends Controller
         $user_id = $user['id'];
         // ↓editのviewにlist_idも渡す
         $list_id = $request->id;
+        // dd($list_id);
         $rabels = rabel::where('user_id', $user_id)->where('rabel_content')->get();
         // dd($rabels);
         // findはgetも兼ねている？
