@@ -23033,12 +23033,13 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 function vueCounter() {
+  var _this = this;
   // リアクティブな参照
   var counter = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
   (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
     setInterval(function () {
       // valueを更新。画面も更新される
-      counter.value++;
+      _this.counter.value++;
     }, 1000);
   });
   return {

@@ -9,7 +9,7 @@ export default function vueCounter() {
     onMounted(() => {
         setInterval(() => {
             // valueを更新。画面も更新される
-            counter.value++;
+            this.counter.value++;
         }, 1000);
     });
 
