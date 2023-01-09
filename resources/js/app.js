@@ -13,43 +13,14 @@ createApp({
     components:{
         TodotopComponent
     },
-    // data(){
-    //     return {
-    //     message: 'hello V',
-    //     };
-    // },
+
 }).mount('#todo')
 
-const appdata = {
-    // props（method）
-    // ↓defined function(method)
-    data(){
-        return {
-            // ↓object(defined values)(props)
-            // basically the value is defined like the return value.
-            message2: '',
-        }
-    },
-    // ↑ Need [ , ] divide methods
-
-    // ↓ Run when the processes is generated
-    created(){
-        this.message2 = 'Count: 0',
-        this.count = 0
-    },
-
-    // ↓Run (defined action to be performed when action is included)
-    mounted(){
-        // Interval(function, msec)
-        timer = setInterval(() => {
-            this.count++,
-            this.message2 = 'Count: ' + this.count
-        }, 1000)
-    }
-}
 Vue.createApp(appdata).mount('#counter')
 
 // window.Vue = require('vue').default;
+
+
 
 /**
  * The following block of code may be used to automatically register your

@@ -45,11 +45,8 @@
 
             <div id="todo">
                 <todotop-component></todotop-component>
-                @{{ message }}
             </div>
-            <div id="counter">
-                @{{ message2 }}
-            </div>
+
             <script src="{{ mix('js/app.js') }}"></script>
 
         </div>
