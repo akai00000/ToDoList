@@ -71,7 +71,7 @@ class HomeController extends Controller
         // dd($rabel);
 
 
-        // ↓あとでユーザーIDはカラムに入れておく。
+        // ↓あとでユーザーIDはカラムに入れておく。 → 完了。
         $exist_rabel = rabel::where('user_id', $user_id)->where('rabel_content', $data['rabel'])->first();
         // dd($exist_rabel);
         //..//existまではデータが来ている。
@@ -101,6 +101,8 @@ class HomeController extends Controller
             'deadline' => $data['deadline'], 
             'content' => $data['content'], 
             ])->save();
+
+        // $list->fill($data)->save;
 
         return redirect()->route('top')->with('success', 'タスクを追加しました。');
     }
