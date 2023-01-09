@@ -22905,7 +22905,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.message), 1 /* TEXT */);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("p", null, "test");
 }
 
 /***/ }),
@@ -22918,9 +22918,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _vueCounter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vueCounter */ "./resources/js/vueCounter.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _components_TodotopComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/TodotopComponent.vue */ "./resources/js/components/TodotopComponent.vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _components_TodotopComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/TodotopComponent.vue */ "./resources/js/components/TodotopComponent.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -22930,28 +22929,41 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
-
-(0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
+(0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
   components: {
-    TodotopComponent: _components_TodotopComponent_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
-  },
+    TodotopComponent: _components_TodotopComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }
+  // data(){
+  //     return {
+  //     message: 'hello V',
+  //     };
+  // },
+}).mount('#todo');
+var appdata = {
+  // props（method）
+  // ↓defined function(method)
   data: function data() {
     return {
-      message: 'hello V',
-      messagea: 'hello1'
+      // ↓object(defined values)(props)
+      // basically the value is defined like the return value.
+      message2: ''
     };
+  },
+  // ↑ Need [ , ] divide methods
+  // ↓ Run when the processes is generated
+  created: function created() {
+    this.message2 = 'Count: 0', this.count = 0;
+  },
+  // ↓Run (defined action to be performed when action is included)
+  mounted: function mounted() {
+    var _this = this;
+    // Interval(function, msec)
+    timer = setInterval(function () {
+      _this.count++, _this.message2 = 'Count: ' + _this.count;
+    }, 1000);
   }
-}).mount('#todo');
-(0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)({
-  setup: function setup() {
-    // カウンターを更新する
-    var _vueCounter = (0,_vueCounter__WEBPACK_IMPORTED_MODULE_0__["default"])(),
-      counter = _vueCounter.counter;
-    return {
-      counter: counter
-    };
-  }
-}).mount("#counter");
+};
+Vue.createApp(appdata).mount('#counter');
 
 // window.Vue = require('vue').default;
 
@@ -22966,6 +22978,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+// ↓vue2の書き方
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 // Vue.component('todotop-component', require('./components/TodotopComponent.vue').default);
 
@@ -23015,37 +23028,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
-
-/***/ }),
-
-/***/ "./resources/js/vueCounter.js":
-/*!************************************!*\
-  !*** ./resources/js/vueCounter.js ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ vueCounter)
-/* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-function vueCounter() {
-  var _this = this;
-  // リアクティブな参照
-  var counter = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
-  (0,vue__WEBPACK_IMPORTED_MODULE_0__.onMounted)(function () {
-    setInterval(function () {
-      // valueを更新。画面も更新される
-      _this.counter.value++;
-    }, 1000);
-  });
-  return {
-    counter: counter
-  };
-}
 
 /***/ }),
 

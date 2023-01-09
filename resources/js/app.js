@@ -5,7 +5,6 @@
  */
 
 require("./bootstrap");
-import vueCounter from "./vueCounter";
 import { createApp } from "vue";
 import TodotopComponent from './components/TodotopComponent.vue';
 
@@ -14,27 +13,41 @@ createApp({
     components:{
         TodotopComponent
     },
+    // data(){
+    //     return {
+    //     message: 'hello V',
+    //     };
+    // },
+}).mount('#todo')
+
+const appdata = {
+    // props（method）
+    // ↓defined function(method)
     data(){
         return {
-        message: 'hello V',
-        messagea: 'hello1',
-        };
+            // ↓object(defined values)(props)
+            // basically the value is defined like the return value.
+            message2: '',
+        }
     },
-}).mount('#todo');
+    // ↑ Need [ , ] divide methods
 
-
-
-createApp({
-    setup() {
-
-        // カウンターを更新する
-        const {counter}  = vueCounter();
-
-        return {
-            counter,
-        };
+    // ↓ Run when the processes is generated
+    created(){
+        this.message2 = 'Count: 0',
+        this.count = 0
     },
-}).mount("#counter");
+
+    // ↓Run (defined action to be performed when action is included)
+    mounted(){
+        // Interval(function, msec)
+        timer = setInterval(() => {
+            this.count++,
+            this.message2 = 'Count: ' + this.count
+        }, 1000)
+    }
+}
+Vue.createApp(appdata).mount('#counter')
 
 // window.Vue = require('vue').default;
 
@@ -49,6 +62,7 @@ createApp({
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+// ↓vue2の書き方
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 // Vue.component('todotop-component', require('./components/TodotopComponent.vue').default);
 

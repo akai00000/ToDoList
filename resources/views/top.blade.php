@@ -45,10 +45,10 @@
 
             <div id="todo">
                 <todotop-component></todotop-component>
-                @{{ messagea }}
+                @{{ message }}
             </div>
             <div id="counter">
-                カウントアップ: @{{ counter }}
+                @{{ message2 }}
             </div>
             <script src="{{ mix('js/app.js') }}"></script>
 
