@@ -36,6 +36,13 @@
 
                 </div>
             </div>
+
+            <div id="todo">
+                <todotop-component></todotop-component>
+            </div>
+
+            <script src="{{ mix('js/app.js') }}"></script>
+
         </div>
 
         <div class="col-md-4">
@@ -63,8 +70,13 @@
 
             </div>
         </div>
-
-
     </div>
+
+
+
+<!-- ↓containerdiv -->
 </div>
+
+
+
 @endsection
