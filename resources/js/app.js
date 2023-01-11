@@ -6,20 +6,33 @@
 
 require("./bootstrap");
 import { createApp } from "vue";
-import TodotopComponent from './components/TodotopComponent.vue';
+// import TodotopComponent from './components/TodotopComponent.vue';
+import vueDataGet from './components/vueDataGet.vue';
 
+
+// createApp({
+//     components:{
+//         TodotopComponent
+//     },
+//     const: appdata
+// }).mount('#todo')
 
 createApp({
     components:{
-        TodotopComponent
+        vueDataGet
     },
+}).mount('#vueDataGet')
 
-}).mount('#todo')
-
-Vue.createApp(appdata).mount('#counter')
+// Vue.createApp(appdata).mount('#counter')
 
 // window.Vue = require('vue').default;
 
+
+// @/Layouts/Guest.vue → @/Layouts/GuestLayout.vue
+
+// @/Components/Label.vue → @/Components/InputLabel.vue
+
+// @/Components/Input.vue → @/Components/TextInput.vue
 
 
 /**

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\List_model;
 use App\Models\rabel;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -31,7 +33,7 @@ class HomeController extends Controller
 
     public function top()
     {
-        $user = \Auth::user();
+        $user = Auth::user();
         $user_id = $user['id'];
         //// dd($user_id);
         $rabels = rabel::select('rabel_content')->where('user_id', $user_id)->where('status', 1)->get();
@@ -39,23 +41,19 @@ class HomeController extends Controller
         $titles = List_model::select('title')->where('user_id', $user_id)->where('status', 1)->orderBy('deadline', 'asc')->get();
         // dd($titles);
 
-        $data = [
-            'msg' => 'This is vue.js text,'
-            ];
-
-        return view('top', compact('rabels', 'titles', 'data'));
+        return view('top', compact('rabels', 'titles'));
     }
 
     public function create()
     {
-        $user = \Auth::user();
+        $user = Auth::user();
         $user_id = $user['user_id'];
         return view('create');
     }
 
     public function store(Request $request)
     {
-        $user = \Auth::user();
+        $user = Auth::user();
         $user_id = $user['id'];
         $status = 1;
 
@@ -109,7 +107,7 @@ class HomeController extends Controller
 
     public function edit(Request $request)
     {
-        $user = \Auth::user();
+        $user = Auth::user();
         $user_id = $user['id'];
         // ↓editのviewにlist_idも渡す
         $list_id = $request->id;
@@ -128,7 +126,7 @@ class HomeController extends Controller
         // 入力した情報を格納
         $updateList = $request->all();
         unset($updateList['_token']);
-        \Log::debug($request->id);
+        Log::debug($request->id);
         // ↓クエリビルダから取得したlistのidを用いて、モデル（テーブル）から一致するレコードを取得し、変数に格納
         $list = List_model::find($updateList['list_id']);
         // dd($list);
@@ -143,7 +141,7 @@ public function del(Request $request)
     // //ここでは、①特定のレコードをクエリビルダに記述されたidを用いてDBのテーブルからレコードを取得
     // //②そして、取得した情報をdelのviewに渡して表示させる。
     // //③必要なことはテーブルからタイトル名、ラベル名、優先度、内容、締切を持ってきて表示させること
-    $user = \Auth::user();
+    $user = Auth::user();
     $user_id = $user['id'];
     // ↓rabelsはラベル一覧のブロックに表示するために使用する。
     $rabels = rabel::where('user_id', $user_id)->get();
@@ -160,7 +158,7 @@ public function remove(Request $request)
     /* ↓ 消去するlistに対応するラベルのうち、他と同じものがあるかを確認する。
     （重複があれば、ラベルはまだ消してはいけないため、一部の処理をパスするようにする）
     */
-    $user = \Auth::user();
+    $user = Auth::user();
     $user_id = $user['id'];
     // ↓inputに記載された情報をrequestallで取得する。
     $list_data = $request->all();
@@ -180,6 +178,21 @@ public function remove(Request $request)
         rabel::where('rabel_id', $list_data['rabel_id'])->update(['status' => 2]);
     }
     return redirect('/top');
+}
+
+// vueにDBのデータを渡すためのメソッド
+public function vueDataGet(){
+    // $user = \Auth::user();
+    // $user_id = $user['id'];
+    // //// dd($user_id);
+    // $rabels = rabel::select('rabel_content')->where('user_id', $user_id)->where('status', 1)->get();
+    // // dd($rabels);
+    // $titles = List_model::select('title')->where('user_id', $user_id)->where('status', 1)->orderBy('deadline', 'asc')->get();
+    // // dd($titles);
+    // $list_content = List_model::select('content')->where('user_id', $user_id)->where('status', 1)->orderBy('deadline', 'asc')->get();
+    $user = DB::select('select id from Lists where rabel = "b"');
+    // dd($users);
+    return view('/top2', compact($user));
 }
 
 }
