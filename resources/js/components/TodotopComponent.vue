@@ -4,7 +4,12 @@
 </template>
 
 <script>
-const appdata = {
+export default {
+    mounted() {
+        console.log('Component mounted.')
+    },
+
+    const: appdata = {
         data(){
             return {
                 // ↓object(defined values)(props)
@@ -27,7 +32,8 @@ const appdata = {
                 this.count++,
                 this.message2 = 'Count: ' + this.count
             }, 1000)
-            console.log('Component mounted.')
         },
+    }
 }
+
 </script>

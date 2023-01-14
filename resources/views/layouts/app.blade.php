@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}" defer="defer"></script>
 
 
     <!-- Styles --><!-- Fonts -->
@@ -79,7 +79,7 @@
         <div class = "container">
             <div class="column_create_header">
             <!-- 新規作成、編集ボタンの作成 -->
-            <ul class="list-group list-group-horizontal" style = "background-color: $gray-300;">
+            <ul class="list-group list-group-horizontal" style = "background-color: gray-300;">
                 <li class="list-group-item"><a href = "/create">新規作成</a></li>
                 <li class="list-group-item"><a href = "/edit">タスクの編集</a></li>
             </ul>

@@ -5,21 +5,24 @@
  */
 
 require("./bootstrap");
+
+window.Vue = require('vue').default;
+
 import { createApp } from "vue";
-import TodotopComponent from './components/TodotopComponent.vue';
+import vueDataGetComponent from './components/vueDataGetComponent.vue';
+// import axios from 'axios';
+
+const app = createApp({})
+
+app.component('test-vue', vueDataGetComponent);
+app.mount('#vuedata');
 
 
-createApp({
-    components:{
-        TodotopComponent
-    },
 
-}).mount('#todo')
-
-Vue.createApp(appdata).mount('#counter')
-
-// window.Vue = require('vue').default;
-
+/** @/Layouts/Guest.vue → @/Layouts/GuestLayout.vue
+ * @/Components/Label.vue → @/Components/InputLabel.vue
+ * @/Components/Input.vue → @/Components/TextInput.vue
+ */
 
 
 /**
@@ -32,10 +35,6 @@ Vue.createApp(appdata).mount('#counter')
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-// ↓vue2の書き方
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-// Vue.component('todotop-component', require('./components/TodotopComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

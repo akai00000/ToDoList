@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\List_model;
 use App\Models\rabel;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -40,11 +41,7 @@ class HomeController extends Controller
         $titles = List_model::select('title')->where('user_id', $user_id)->where('status', 1)->orderBy('deadline', 'asc')->get();
         // dd($titles);
 
-        $data = [
-            'msg' => 'This is vue.js text,'
-            ];
-
-        return view('top', compact('rabels', 'titles', 'data'));
+        return view('top', compact('rabels', 'titles'));
     }
 
     public function create()
@@ -181,6 +178,21 @@ public function remove(Request $request)
         rabel::where('rabel_id', $list_data['rabel_id'])->update(['status' => 2]);
     }
     return redirect('/top');
+}
+
+// vueにDBのデータを渡すためのメソッド
+public function vueDataGet(){
+    $user = Auth::user();
+    $user_id = $user['id'];
+    // //// dd($user_id);
+    // $rabels = rabel::select('rabel_content')->where('user_id', $user_id)->where('status', 1)->get();
+    // // dd($rabels);
+    // $titles = List_model::select('title')->where('user_id', $user_id)->where('status', 1)->orderBy('deadline', 'asc')->get();
+    // // dd($titles);
+    $list_contents= List_model::select('content')->where('user_id', $user_id)->where('status', 1)->get();
+    $user = DB::select('select id from Lists where rabel = "b"');
+    // dd($users);
+    return view('/top2', compact($user, $list_contents));
 }
 
 }
