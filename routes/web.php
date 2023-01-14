@@ -40,5 +40,5 @@ Route::post('/update', [App\Http\Controllers\HomeController::class, 'update'])->
 Route::get('/del', [App\Http\Controllers\HomeController::class, 'del'])->name('del');
 Route::post('/del', [App\Http\Controllers\HomeController::class, 'remove'])->name('remove');
 
-//vue_test
+//vue_test(axiosAPI)
 Route::get('/top2', [App\Http\Controllers\HomeController::class, 'vueDataGet'])->name('vueDataGet');

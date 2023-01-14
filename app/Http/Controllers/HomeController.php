@@ -182,17 +182,17 @@ public function remove(Request $request)
 
 // vueにDBのデータを渡すためのメソッド
 public function vueDataGet(){
-    // $user = \Auth::user();
-    // $user_id = $user['id'];
+    $user = Auth::user();
+    $user_id = $user['id'];
     // //// dd($user_id);
     // $rabels = rabel::select('rabel_content')->where('user_id', $user_id)->where('status', 1)->get();
     // // dd($rabels);
     // $titles = List_model::select('title')->where('user_id', $user_id)->where('status', 1)->orderBy('deadline', 'asc')->get();
     // // dd($titles);
-    // $list_content = List_model::select('content')->where('user_id', $user_id)->where('status', 1)->orderBy('deadline', 'asc')->get();
+    $list_contents= List_model::select('content')->where('user_id', $user_id)->where('status', 1)->get();
     $user = DB::select('select id from Lists where rabel = "b"');
     // dd($users);
-    return view('/top2', compact($user));
+    return view('/top2', compact($user, $list_contents));
 }
 
 }

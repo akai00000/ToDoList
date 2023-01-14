@@ -10,13 +10,12 @@
                 <div class="card-header">タスク</div>
 
                 <div class="card-body">
-                    
-                    {{ __('You are logged in!') }}
-
-                    <div id="vueDataGet">
-                        <vueDataGet-component></vueDataGet-component>
-                    </div>
+                  vue表示サンプル
                 </div>
+            </div>
+
+            <div id="vuedata">
+                <test-vue></test-vue>
             </div>
 
             <script src="{{ mix('js/app.js') }}"></script>
