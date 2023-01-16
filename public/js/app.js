@@ -22884,22 +22884,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   setup: function setup() {
     var price = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(100);
     var tax = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(1.1);
-    var totalValue = (0,vue__WEBPACK_IMPORTED_MODULE_0__.computed)(function () {
-      return Math.round(price.value * tax.value);
+    var totalValue = Math.round(price.value * tax.value);
+    var updateData = function updateData() {
+      Math.round(price.value * tax.value), _readOnlyError("totalValue");
+    };
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(price, function () {
+      return updateData();
     });
+
+    // console.log('Component mounted.')
     return {
       price: price,
       tax: tax,
       totalValue: totalValue
     };
-  },
-  mounted: function mounted() {
-    console.log('Component mounted.');
   }
 });
 
@@ -22956,7 +22960,7 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bu
 // import axios from 'axios';
 
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({});
-app.component('test-vue', _components_vueDataGetComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
+app.component('test-component', _components_vueDataGetComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
 app.mount('#vuedata');
 
 /** @/Layouts/Guest.vue → @/Layouts/GuestLayout.vue
