@@ -192,7 +192,7 @@ public function vueDataGet(){
     $list_contents= List_model::select('content')->where('user_id', $user_id)->where('status', 1)->get();
     $user = DB::select('select id from Lists where rabel = "b"');
     // dd($users);
-    return view('/top2', compact($user, $list_contents));
+    return view('/top2', compact('user', 'list_contents'));
 }
 
 }

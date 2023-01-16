@@ -14,7 +14,7 @@ import vueDataGetComponent from './components/vueDataGetComponent.vue';
 
 const app = createApp({})
 
-app.component('test-vue', vueDataGetComponent);
+app.component('test-component', vueDataGetComponent);
 app.mount('#vuedata');
 
 
