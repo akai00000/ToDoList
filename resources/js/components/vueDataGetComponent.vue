@@ -11,26 +11,24 @@
 </template>
 
 <script>
-import { ref, watch } from 'vue'
 export default {
-  setup() {
-    const price = ref(100)
-    const tax = ref(1.1)
-    const totalValue = Math.round(price.value * tax.value)
-
-    const updateData = () => {
-      totalValue = Math.round(price.value * tax.value)
-    }
-
-    watch(price, () => updateData())
-
-    // console.log('Component mounted.')
+  data() {
     return {
-      price,
-      tax,
-      totalValue
+      price: '100',
+      tax: '1.1',
+      totalValue: '',
     }
+  },
 
+  watch: {
+    price (new_data, old_data) {
+        // priceの値が変わるとここの処理が走る
+        // ここで税込価格の処理をする
+        // new_dataは新しく入力された値
+        // old_dataは古い値
+        totalValue = Math.round(old_data * tax)
+        totalValue = Math.round(new_data * tax)
+    }
   },
 };
 </script>

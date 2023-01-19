@@ -10,12 +10,17 @@ window.Vue = require('vue').default;
 
 import { createApp } from "vue";
 import vueDataGetComponent from './components/vueDataGetComponent.vue';
+import TopTitle from './components/TopTitle.vue';
 // import axios from 'axios';
 
 const app = createApp({})
 
 app.component('test-component', vueDataGetComponent);
 app.mount('#vuedata');
+
+app.component('toptitle-component', TopTitle);
+app.mount('#toptitle');
+
 
 
 

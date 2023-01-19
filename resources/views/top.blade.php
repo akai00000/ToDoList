@@ -37,15 +37,7 @@
                 </div>
             </div>
 
-            <div id="todo">
-                <!-- <todotop-component></todotop-component> -->
-            </div>
-            <div id="vueDataGet">
-                <vueDataGet-component></vueDataGet-component>
-            </div>
 
-
-            <script src="{{ mix('js/app.js') }}"></script>
 
         </div>
 
@@ -76,7 +68,7 @@
         </div>
     </div>
 
-
+    <script src="{{ mix('js/app.js') }}"></script>
 
 <!-- ↓containerdiv -->
 </div>
