@@ -44,6 +44,15 @@ class HomeController extends Controller
         return view('top', compact('rabels', 'titles'));
     }
 
+    public function toptitle()
+    {
+        $user = Auth::user();
+        $user_id = $user['id'];
+        $lists = List_model::select('title')->where('user_id', $user_id)->get();
+        // dd($lists);
+        return view('toptitle', compact('lists'));
+    }
+
     public function create()
     {
         $user = Auth::user();

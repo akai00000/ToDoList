@@ -42,3 +42,5 @@ Route::post('/del', [App\Http\Controllers\HomeController::class, 'remove'])->nam
 
 //vue_test(axiosAPI)
 Route::get('/top2', [App\Http\Controllers\HomeController::class, 'vueDataGet'])->name('vueDataGet');
+// ↓toptitle_test
+Route::get('/toptitle', [App\Http\Controllers\HomeController::class, 'toptitle'])->name('toptitle');
