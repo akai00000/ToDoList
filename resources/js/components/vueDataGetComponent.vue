@@ -26,8 +26,8 @@ export default {
         // ここで税込価格の処理をする
         // new_dataは新しく入力された値
         // old_dataは古い値
-        totalValue = Math.round(old_data * tax)
-        totalValue = Math.round(new_data * tax)
+        this.totalValue = Math.round(old_data * this.tax)
+        this.totalValue = Math.round(new_data * this.tax)
     }
   },
 };

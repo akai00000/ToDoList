@@ -49,8 +49,11 @@ class HomeController extends Controller
         $user = Auth::user();
         $user_id = $user['id'];
         $lists = List_model::select('title')->where('user_id', $user_id)->get();
+        $ids = List_model::select('id')->where('user_id', $user_id)->get();
+        $dasss = List_model::where('user_id', $user_id)->where('status', 1)->get();
         // dd($lists);
-        return view('toptitle', compact('lists'));
+        // return $data;
+        return view('toptitle', compact('lists', 'ids', 'dasss'));
     }
 
     public function create()

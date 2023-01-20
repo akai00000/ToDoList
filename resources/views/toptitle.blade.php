@@ -7,7 +7,7 @@
 
         <div class="col-md-4">
             <div id="toptitle">
-                <toptitle-component v-bind:lists="{{ ($lists) }}"></toptitle-component>
+                <toptitle-component v-bind:lists="{{ ($lists) }}" v-bind:ids="{{ ($ids) }}" v-bind:dasss="{{ ($dasss) }}"></toptitle-component>
             </div>
         </div>
 

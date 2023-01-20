@@ -4,13 +4,13 @@
       <div class="card-body">
 
         <!-- 正しく表示される -->
-        <ul v-for=" list in lists">
+        <ul v-for="list in lists" v-bind:key="lists.title">
           <li>{{ list.title }}</li>
         </ul>
 
         <!-- 正しく表示されない -->
-        <ul>
-          <li v-for="title in data.titles">{{ title }}</li>
+        <ul v-for="da in dasss">
+            <a v-bind:href="`/edit/?id=${da.id}`"><li>{{ da.title }}</li></a>
         </ul>
 
       </div>
@@ -27,11 +27,12 @@ export default {
 
   // v-bindを使ってDBのlistテーブルにあるtitleカラムを取得・表示する。
   // v-bindでデータを取得することができた。
-  props: ["lists"],
+  props: ["lists", "ids", "dasss"],
   mounted() {
     console.log(this.lists)
+    console.log(this.ids)
+    console.log(this.dasss)
   },
-
   // axiosを使ってDBのlistテーブルにあるtitleカラムを取得する。
   setup(props) {
     const data = reactive({
