@@ -22896,9 +22896,11 @@ var url = "/toptitle";
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   // v-bindを使ってDBのlistテーブルにあるtitleカラムを取得・表示する。
   // v-bindでデータを取得することができた。
-  props: ["lists"],
+  props: ["lists", "ids", "dasss"],
   mounted: function mounted() {
     console.log(this.lists);
+    console.log(this.ids);
+    console.log(this.dasss);
   },
   // axiosを使ってDBのlistテーブルにあるtitleカラムを取得する。
   setup: function setup(props) {
@@ -22966,8 +22968,8 @@ __webpack_require__.r(__webpack_exports__);
       // ここで税込価格の処理をする
       // new_dataは新しく入力された値
       // old_dataは古い値
-      totalValue = Math.round(old_data * tax);
-      totalValue = Math.round(new_data * tax);
+      this.totalValue = Math.round(old_data * this.tax);
+      this.totalValue = Math.round(new_data * this.tax);
     }
   }
 });
@@ -22996,12 +22998,17 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_3 = {
   "class": "card-body"
 };
+var _hoisted_4 = ["href"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 正しく表示される "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.lists, function (list) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(list.title), 1 /* TEXT */)]);
-  }), 256 /* UNKEYED_FRAGMENT */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 正しく表示されない "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.data.titles, function (title) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("li", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(title), 1 /* TEXT */);
-  }), 256 /* UNKEYED_FRAGMENT */))])])]);
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", {
+      key: $props.lists.title
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(list.title), 1 /* TEXT */)]);
+  }), 128 /* KEYED_FRAGMENT */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" 正しく表示されない "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.dasss, function (da) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+      href: "/edit/?id=".concat(da.id)
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(da.title), 1 /* TEXT */)], 8 /* PROPS */, _hoisted_4)]);
+  }), 256 /* UNKEYED_FRAGMENT */))])]);
 }
 
 /***/ }),
