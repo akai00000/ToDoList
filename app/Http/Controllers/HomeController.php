@@ -35,28 +35,15 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $user_id = $user['id'];
-        //// dd($user_id);
-        $rabels = rabel::select('rabel_content')->where('user_id', $user_id)->where('status', 1)->get();
-        // dd($rabels);
-        $titles = List_model::select('title')->where('user_id', $user_id)->where('status', 1)->orderBy('deadline', 'asc')->get();
-        // dd($titles);
-
-        return view('top', compact('rabels', 'titles'));
-    }
-
-    public function toptitle()
-    {
-        $user = Auth::user();
-        $user_id = $user['id'];
-        $lists = List_model::select('title')->where('user_id', $user_id)->get();
-        // dd($lists);
-        return view('toptitle', compact('lists'));
+        $lists_doing = List_model::where('user_id', $user_id)->where('status', 1)->get();
+        // $lists = List_model::where('user_id', $user_id)->get();
+        return view('top', compact('lists_doing'));
     }
 
     public function create()
     {
         $user = Auth::user();
-        $user_id = $user['user_id'];
+        $user_id = $user['id'];
         return view('create');
     }
 
@@ -84,12 +71,6 @@ class HomeController extends Controller
         //..//existまではデータが来ている。
         if(empty($exist_rabel) )
         {
-            // $rabel->fill([
-            //     'rabel_content' => $data['rabel'],
-            //     'user_id' => $user_id,
-            //     'status' => $status,
-            // ])->save();
-
             //↓リクエストされたラベルを挿入し、挿入時に生成されたrabelsのIDを受け取る。
             // そのため、上記のfill()はなくてもいける。
             $rabel_id = rabel::insertGetId(['rabel_content' => $data['rabel'], 'user_id' => $user_id, 'status' => $status]);
@@ -118,12 +99,8 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $user_id = $user['id'];
-        // ↓editのviewにlist_idも渡す
         $list_id = $request->id;
-        // dd($list_id);
         $rabels = rabel::where('user_id', $user_id)->where('rabel_content')->get();
-        // dd($rabels);
-        // findはgetも兼ねている？
         $list = List_model::find($list_id);
         $titles = List_model::where('user_id', $user_id)->where('title')->get();
         // dd($list);
