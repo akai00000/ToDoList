@@ -1,16 +1,26 @@
 <template>
-  <ul v-for="list in lists">
-      <a v-bind:href="`/edit/?id=${list.id}`"><li>{{ list.content }}</li></a>
-  </ul>
+  <div>
+    <ul v-for="content in lists">{{ content.content }}</ul>
+  </div>
 </template>
 
 <script>
-const url = "/top"
-
 export default {
-props: ["lists"],
-mounted() {
-  console.log('testtest')                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-},
+  data() {
+    return {
+      content: "",
+    };
+  },
+
+  created() {
+    this.contentGet();
+  },
+
+  methods: {
+    async contentGet() {
+      const listsdata = await axios.get("/top");
+      this.lists = listsdata.data;
+    },
+  },
 };
 </script>

@@ -10,9 +10,7 @@
                 <div class="card-body">
                     <div class="rabel-block">
                         <div class="d-flex flex-column">
-                            <div id="rabeldoing">
-                                <rabeldoing-component v-bind:lists="{{ ($lists) }}"></rabeldoing-component>
-                            </div>
+                <!-- rabelvue -->
                         </div>
                     </div>
                 </div>
@@ -29,16 +27,15 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <div id="contentdoing">
-                        <contentdoing-component v-bind:lists="{{ ($lists) }}"></contentdoing-component>
-                    </div>
+
+                <!-- contentvue -->
                 </div>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header">締切順</div>
+                <div class="card-header">タイトル</div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
