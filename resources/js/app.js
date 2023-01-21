@@ -9,18 +9,24 @@ require("./bootstrap");
 window.Vue = require('vue').default;
 
 import { createApp } from "vue";
-import vueDataGetComponent from './components/vueDataGetComponent.vue';
-import TopTitle from './components/TopTitle.vue';
-// import axios from 'axios';
+// import vueDataGetComponent from './components/vueDataGetComponent.vue';
+import TitleDoingLink from './components/TitleDoingLink.vue';
+import RabelDoingLink from './components/RabelDoingLink.vue';
+import ContentDoingLink from './components/ContentDoingLink.vue';
 
 const app = createApp({})
 
-app.component('test-component', vueDataGetComponent);
-app.mount('#vuedata');
+// app.component('test-component', vueDataGetComponent);
+// app.mount('#vuedata');
 
-app.component('toptitle-component', TopTitle);
-app.mount('#toptitle');
+app.component('titledoing-component', TitleDoingLink);
+app.mount('#titledoing');
 
+app.component('rabeldoing-component', RabelDoingLink);
+app.mount('#rabeldoing');
+
+app.component('contentdoing-component', ContentDoingLink);
+app.mount('#contentdoing');
 
 
 
