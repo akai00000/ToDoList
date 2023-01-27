@@ -45,7 +45,7 @@
                     <div class="title-block">
                         <div class="d-flex flex-column">
                             <div id="titledoing">
-                                <titledoing-component v-bind:lists_doing="{{ ($lists_doing) }}"></titledoing-component>
+                                <titledoing-component></titledoing-component>
                             </div>
                         </div>
                     </div>

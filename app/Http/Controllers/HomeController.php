@@ -28,7 +28,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('top');
+        $user = Auth::user();
+        $user_id = $user['id'];
+        $lists_doing = List_model::where('user_id', $user_id)->where('status', 1)->get();
+        return view('top', compact('lists_doing'));
     }
 
     public function top()
@@ -37,7 +40,7 @@ class HomeController extends Controller
         $user_id = $user['id'];
         $lists_doing = List_model::where('user_id', $user_id)->where('status', 1)->get();
         // $lists = List_model::where('user_id', $user_id)->get();
-        return view('top', compact('lists_doing'));
+        return $lists_doing;
     }
 
     public function create()
